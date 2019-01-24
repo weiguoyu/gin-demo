@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"github.com/huyujie/gin-demo/config"
 	"github.com/huyujie/gin-demo/logger"
 	"github.com/huyujie/gin-demo/routers"
@@ -17,10 +16,6 @@ func main() {
 	cfg := flag.String("c", "./config/config.yaml", "configuration file")
 	flag.Parse()
 	config.ParseConfig(*cfg)
-
-	c := config.ReadConf()
-
-	fmt.Println(c.Log.Level)
 
 	logger.Setup()
 
