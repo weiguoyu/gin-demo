@@ -25,25 +25,6 @@ var (
 	lock   = new(sync.RWMutex)
 )
 
-func (c *Config) LoadConfig(cfg string) error {
-	configFile, err := ioutil.ReadFile(cfg)
-
-	if err != nil {
-		log.Fatalf("yamlFile.Get err   #%v ", err)
-		return err
-	}
-	err = yaml.Unmarshal(configFile, &c)
-	if err != nil {
-		log.Fatalf("Unmarshal: %v", err)
-		return err
-	}
-
-	lock.Lock()
-	defer lock.Unlock()
-
-	return nil
-}
-
 func ParseConfig(cfg string) {
 	if cfg == "" {
 		log.Fatalln("use -c to specify configuration file")
