@@ -2,6 +2,7 @@ package logger
 
 import (
 	"fmt"
+	"github.com/huyujie/gin-demo/config"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
@@ -10,14 +11,22 @@ import (
 var Logger *zap.Logger
 
 func Setup() {
+
+	c := config.ReadConf()
+
 	lumlog := zapcore.AddSync(&lumberjack.Logger{
-		Filename:   "/var/log/gin_demo.log",
-		MaxSize:    100, // megabytes
-		MaxBackups: 3,
-		MaxAge:     7, // days
+		Filename:   c.Log.Filename,
+		MaxSize:    c.Log.MaxSize,
+		MaxBackups: c.Log.MaxBackups,
+		MaxAge:     c.Log.MaxAge,
 	})
+
+	EncoderConfig := zap.NewProductionEncoderConfig()
+	EncoderConfig.TimeKey = "time"
+	EncoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder
+
 	core := zapcore.NewCore(
-		zapcore.NewJSONEncoder(zap.NewProductionEncoderConfig()),
+		zapcore.NewJSONEncoder(EncoderConfig),
 		lumlog,
 		zap.InfoLevel,
 	)
