@@ -30,7 +30,6 @@ func main() {
 	gin.SetMode(c.Common.Gin.Mode)
 	routes := gin.New()
 	go demo_api.StartGin(c, routes)
-	go http.ListenAndServe("0.0.0.0:8080", nil)
 
 	sigs := make(chan os.Signal, 1)
 	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
