@@ -1,6 +1,0 @@
-log:
-  filename: "/var/log/gin_demo/gin_demo.log"
-  level: "info"
-  maxsize: 100
-  maxbackups: 7
-  maxage: 7
