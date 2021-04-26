@@ -31,8 +31,9 @@ type Common struct {
 		MaxAge     int    `yaml:"maxage"` //days
 	}
 
-	mysql struct {
+	Mysql struct {
 		Address  string `yaml:"address"`
+		Port     string `yaml:"port"`
 		Dbname   string `yaml:"dbname"`
 		Username string `yaml:"username"`
 		Password string `yaml:"password"`

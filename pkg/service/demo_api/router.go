@@ -17,5 +17,5 @@ func StartGin(cfg *config.Config, r *gin.Engine) {
 		c.String(http.StatusOK, "Hello, I'm gin-demo!")
 	})
 	demo1.Routes(r)
-	r.Run(fmt.Sprintf(":%s", cfg.Api.Port))
+	r.Run(fmt.Sprintf(":%s",cfg.Api.Port))
 }

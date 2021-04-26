@@ -5,6 +5,7 @@ package demo1
 
 import (
 	"gin-demo/pkg/logger"
+	"gin-demo/pkg/service/demo_api/v1/demo1/handler"
 	ginzap "github.com/gin-contrib/zap"
 	"github.com/gin-gonic/gin"
 	"time"
@@ -15,7 +16,7 @@ func Routes(r *gin.Engine) {
 	apiv1.Use(ginzap.Ginzap(logger.GetLogger(), time.RFC3339, false))
 	{
 		// demo
-		apiv1.GET("/GetProjects", GetProjects)
+		apiv1.POST("/GetProjects", handler.GetProjects)
 
 	}
 }

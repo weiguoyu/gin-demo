@@ -13,10 +13,11 @@ common:
     maxage: 7
 
   mysql:
-    address: "127.0.0.1:8888"
-    dbname: "demo"
-    username: "demo"
-    password: "12345678"
+    address: "10.226.48.27"
+    port: "3306"
+    dbname: "project_test"
+    username: "root"
+    password: "GOuhjGUM3t-d"
 
-  api:
-    port: "8080"
+api:
+  port: "8080"
